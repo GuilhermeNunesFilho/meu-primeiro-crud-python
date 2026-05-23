@@ -1,0 +1,76 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMiITVotxL5ZvrB9svojdsM",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/GuilhermeNunesFilho/meu-primeiro-crud-python/blob/main/CRUD_Manipulacao_Dados_Python\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 11,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "y8c8rgdf5rqV",
+        "outputId": "2c083702-6d7e-47e0-dfd7-a64280da2914"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Banco de dados e tabela criados com sucesso!\n"
+          ]
+        }
+      ],
+      "source": [
+        "# CRUD - Manipulação de Dados\n",
+        "import sqlite3\n",
+        "\n",
+        "# 1. Conecta ao banco (se o arquivo não existir, o Python cria ele na hora!)\n",
+        "\n",
+        "conexao = sqlite3.connect(\"sistema_clientes.db\")\n",
+        "cursor = conexao.cursor()\n",
+        "\n",
+        "# 2. Cria a tabela de clientes usando SQL real\n",
+        "\n",
+        "cursor.execute(\"\"\"\n",
+        "CREATE TABLE IF NOT EXISTS clientes (\n",
+        "    id INTEGER PRIMARY KEY AUTOINCREMENT,\n",
+        "    nome TEXT NOT NULL,\n",
+        "    email TEXT NOT NULL\n",
+        ")\n",
+        "\"\"\")\n",
+        "\n",
+        "# 3. Salva e fecha\n",
+        "\n",
+        "conexao.commit()\n",
+        "conexao.close()\n",
+        "\n",
+        "print(\"Banco de dados e tabela criados com sucesso!\")\n"
+      ]
+    }
+  ]
+}
